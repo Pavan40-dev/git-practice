@@ -39,11 +39,11 @@ export default defineConfig({
       storageState: 'playwright/.auth/user.json',
     },
     dependencies: ['setup'],
-    testIgnore: ['**/login.spec.ts', '**/logout.spec.ts', '**/invalid-login.spec.ts'],
+    testIgnore: ['**/login.spec.ts'],
     },
     {
     name: 'unauthenticated',
-    testMatch: ['**/login.spec.ts', '**/logout.spec.ts', '**/invalid-login.spec.ts'],
+    testMatch: ['**/login.spec.ts'],
     },
   ],
 });

@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "email": "lokeshavula80@gmail.com",
+      "password": "Lokesh123@",
+      "testCase": "Valid Login"
+    },
+    {
+      "email": "lokeshavula80@gmail.com",
+      "password": "WrongPassword",
+      "testCase": "Invalid Password"
+    },
+    {
+      "email": "",
+      "password": "Lokesh123@",
+      "testCase": "Empty Email"
+    }
+  ]
+}
