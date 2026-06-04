@@ -30,4 +30,5 @@ export class LoginPage {
     async getToken(): Promise<string | null> {
         return await this.page.evaluate(() => localStorage.getItem('token'));
     }
+    
 }

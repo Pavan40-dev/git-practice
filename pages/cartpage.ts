@@ -21,5 +21,4 @@ export class CartPage {
     async navigateToCartPage() {
         await this.page.goto('https://rahulshettyacademy.com/client/#/dashboard/dash');
     }   
-
 }
