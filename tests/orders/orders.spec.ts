@@ -1,13 +1,17 @@
-import{test, expect, Locator} from '@playwright/test';
+import{test, expect} from '@playwright/test';
+import { OrdersPage } from '../../pages/orderspage';
+import { CartPage } from '../../pages/cartpage';
 test.describe('Orders', () => {
-
+  let ordersPage: OrdersPage;
+  let cartPage: CartPage;
   test.beforeEach(async ({ page }) => {
-    await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
+    ordersPage = new OrdersPage(page);
+    cartPage = new CartPage(page);
+    await ordersPage.navigateToOrdersPage();
   });
 
   test('Verify orders page', async ({ page }) => {
-    const headerMenu:Locator = page.locator('nav');
-    await headerMenu.getByRole('button', { name: /ORDERS/i }).click();
+    await cartPage.headerMenu.getByRole('button', { name: /ORDERS/i }).click();
     await expect(page).toHaveURL(/myorders/);
     await expect(page.getByRole('heading', { name: 'Your Orders' })).toBeVisible();
     await expect(page.getByText('Order Id')).toBeVisible();
@@ -18,8 +22,7 @@ test.describe('Orders', () => {
   });
 
   test('Verify order details page', async ({ page }) => {
-    const headerMenu:Locator = page.locator('nav');
-    await headerMenu.getByRole('button', { name: /ORDERS/i }).click();
+    await cartPage.headerMenu.getByRole('button', { name: /ORDERS/i }).click();
     await page.getByRole('button', { name: 'View' }).first().click();
     await expect(page).toHaveURL(/order-details/);
     await expect(page.getByText(/thank you for shopping with us/i)).toBeVisible();
