@@ -2,9 +2,22 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  reporter: 'html',
+
+  workers: 1,
+
+  reporter: [
+    ['line'],
+    ['html'],
+    ['allure-playwright']
+  ],
+
   use: {
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    headless: true,
+    ignoreHTTPSErrors: true,
+    permissions: ['geolocation'],
   },
 
   projects: [
@@ -12,17 +25,21 @@ export default defineConfig({
       name: 'setup',
       testMatch: '**/*.setup.ts',
     },
+
     {
       name: 'authenticated',
+      dependencies: ['setup'],
+
       use: {
         storageState: 'playwright/.auth/user.json',
       },
-      dependencies: ['setup'],
+
       testIgnore: [
-        '**/login.spec.ts',
         '**/*.setup.ts',
+        '**/login.spec.ts',
       ],
     },
+
     {
       name: 'unauthenticated',
       testMatch: '**/login.spec.ts',

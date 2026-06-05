@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "clean": "rimraf allure-results allure-report",
+    "test:allure": "rimraf allure-results allure-report && playwright test",
+    "report": "npx allure generate -o allure-report --open"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lokesh-de/E-Commerce-Project.git"
@@ -18,6 +22,8 @@
   "homepage": "https://github.com/lokesh-de/E-Commerce-Project#readme",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1"
+    "@types/node": "^25.9.1",
+    "allure-playwright": "^3.9.0",
+    "rimraf": "^6.1.3"
   }
 }

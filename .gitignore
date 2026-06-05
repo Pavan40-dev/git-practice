@@ -1,8 +1,24 @@
-
-# Playwright
+# Dependencies
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+
+# Playwright reports
+playwright-report/
+test-results/
+
+# Allure reports
+allure-results/
+allure-report/
+
+# Playwright authentication state
+playwright/.auth/
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
